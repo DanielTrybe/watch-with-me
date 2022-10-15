@@ -1,6 +1,6 @@
-# Projeto Softeo-FrontEnd
+# Projeto Watch-With-Me
 
-<code><img height="50" src="https://blog.4linux.com.br/wp-content/uploads/2018/01/Heroku.png"></code><a href="https://softeo-frontend-daniel.herokuapp.com/">clique aqui para visualizar no HEROKU</a>
+<!-- <code><img height="50" src="https://blog.4linux.com.br/wp-content/uploads/2018/01/Heroku.png"></code><a href="https://softeo-frontend-daniel.herokuapp.com/">clique aqui para visualizar no HEROKU</a> -->
 
 ## Principais tecnologias utilizadas
 
@@ -26,8 +26,8 @@ Windows:
 
 1. Crie uma nova pasta em algum local que deseja.
 2. Abra o terminal do GitBash dentro da pasta criada, depois de entrar nela clique com botão direito, a opção vai aparecer.
-3. Copie esta linha: <code>git clone https://github.com/DanielTrybe/softeo-frontEnd.git</code> e tecle enter.
-4. Entre na pasta com <code>cd softeo-frontEnd</code>
+3. Copie esta linha: <code>git clone https://github.com/DanielTrybe/watch-with-me.git</code> e tecle enter.
+4. Entre na pasta com <code>cd nome-da-pasta</code>
 5. Execute <code>git remote remove origin</code>
 6. Pegue o link do seu respositório criado no inicio!
 7. Execute <code>git remote add origin https://github.com/seurepositorioaqui</code>
@@ -37,8 +37,8 @@ Windows:
 Linux:
 
 1. Abra o terminal do linux e navegue até a pasta que deseja.
-2. Copie esta linha: <code>git clone https://github.com/DanielTrybe/softeo-frontEnd.git</code> e tecle enter.
-3. Entre na pasta com <code>cd softeo-frontEnd</code>
+2. Copie esta linha: <code>git clone https://github.com/DanielTrybe/watch-with-me.git</code> e tecle enter.
+3. Entre na pasta com <code>cd nome-da-pasta</code>
 4. Execute <code>git remote remove origin</code>
 5. Pegue o link do seu respositório criado no inicio!
 6. Execute <code>git remote add origin https://github.com/seurepositorioaqui</code>
@@ -90,17 +90,13 @@ O código contém a seguinte estrutura:
   |  |-__mocks__
   |  |-__tests__
   |  |-components
-  |    |-items
+  |    |-chat
   |    |-layouts
-  |    |-modal
   |  |-hooks
   |  |-images
   |  |-pages
-  |    |-CardDetails
-  |    |-Cards
   |  |-routes
   |  |-services
-  |  |-api
   |  |-context
   |  |-templates
 ```

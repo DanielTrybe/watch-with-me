@@ -3,7 +3,6 @@ import { Grid, Typography, Box } from "@mui/material";
 import YouTube, { YouTubeProps } from "react-youtube";
 import { useCardsContext } from "hooks";
 
-import SkeletonCustom from "components/skeleton/SkeletonCustom";
 import { useStyles } from "./style";
 import { Messages } from "services/context/types";
 import UsersChat from "components/chat/UsersChat";
