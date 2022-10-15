@@ -20,10 +20,10 @@ const schema = yup.object({
 
 export default function Header() {
   const classes = useStyles;
-  const { setSearchVideo } = useCardsContext();
+  const { getNewVideo } = useCardsContext();
 
   const onSubmit = (data: { searchTerm: string }) => {
-    setSearchVideo(data.searchTerm);
+    getNewVideo(data.searchTerm);
   };
 
   const {

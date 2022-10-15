@@ -50,130 +50,132 @@ function LoginPage() {
   };
 
   return (
-    <Container maxWidth="xl" sx={{ background: "black" }}>
-      <Grid
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          minHeight: "100vh",
-        }}
-      >
-        <img
-          data-testid="header-logo"
-          src={WatchWithMeLogo}
-          style={{ borderRadius: 5 }}
-          width="200px"
-          alt="logo"
-        />
-        <Controller
-          control={control}
-          render={({ field: { onChange, value } }) => (
-            <CustomTextField
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <IconButton data-testid="header-btn">
-                      <AccountBoxIcon />
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-              inputProps={{ "data-testid": "header-input" }}
-              placeholder="Your name"
-              id="outlined-start-adornment"
-              sx={{
-                m: 1,
-              }}
-              value={value}
-              onChange={onChange}
-              error={errors?.userName ? true : false}
-              helperText={
-                errors?.userName && (
-                  <span
-                    style={{ position: "absolute", backgroundColor: "black" }}
-                  >
-                    {errors?.userName?.message}
-                  </span>
-                )
-              }
-            />
-          )}
-          name="userName"
-        />
-
-        <Controller
-          control={control}
-          render={({ field: { onChange, value } }) => (
-            <CustomTextField
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <IconButton data-testid="header-btn">
-                      <ContactPageIcon />
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-              inputProps={{ "data-testid": "header-input" }}
-              placeholder="Your avatar"
-              id="outlined-start-adornment"
-              sx={{
-                m: 1,
-              }}
-              value={value}
-              onChange={onChange}
-            />
-          )}
-          name="avatar"
-        />
-
-        <Controller
-          control={control}
-          render={({ field: { onChange, value } }) => (
-            <CustomTextField
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <IconButton data-testid="header-btn">
-                      <ChairIcon />
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-              inputProps={{ "data-testid": "header-input" }}
-              placeholder="Room"
-              id="outlined-start-adornment"
-              sx={{
-                m: 1,
-              }}
-              value={value}
-              onChange={onChange}
-              error={errors?.room ? true : false}
-              helperText={
-                errors?.room && (
-                  <span
-                    style={{ position: "absolute", backgroundColor: "black" }}
-                  >
-                    {errors?.room?.message}
-                  </span>
-                )
-              }
-            />
-          )}
-          name="room"
-        />
-        <Button
-          sx={{ width: 271, mt: 1 }}
-          variant="contained"
-          size="medium"
-          onClick={handleSubmit(onSubmit)}
+    <Grid sx={{ background: "black" }}>
+      <Container maxWidth="xl" sx={{ background: "black" }}>
+        <Grid
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "100vh",
+          }}
         >
-          Entrar
-        </Button>
-      </Grid>
-    </Container>
+          <img
+            data-testid="header-logo"
+            src={WatchWithMeLogo}
+            style={{ borderRadius: 5 }}
+            width="200px"
+            alt="logo"
+          />
+          <Controller
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <CustomTextField
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <IconButton data-testid="header-btn">
+                        <AccountBoxIcon />
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+                inputProps={{ "data-testid": "header-input" }}
+                placeholder="Your name"
+                id="outlined-start-adornment"
+                sx={{
+                  m: 1,
+                }}
+                value={value}
+                onChange={onChange}
+                error={errors?.userName ? true : false}
+                helperText={
+                  errors?.userName && (
+                    <span
+                      style={{ position: "absolute", backgroundColor: "black" }}
+                    >
+                      {errors?.userName?.message}
+                    </span>
+                  )
+                }
+              />
+            )}
+            name="userName"
+          />
+
+          <Controller
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <CustomTextField
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <IconButton data-testid="header-btn">
+                        <ContactPageIcon />
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+                inputProps={{ "data-testid": "header-input" }}
+                placeholder="Your avatar"
+                id="outlined-start-adornment"
+                sx={{
+                  m: 1,
+                }}
+                value={value}
+                onChange={onChange}
+              />
+            )}
+            name="avatar"
+          />
+
+          <Controller
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <CustomTextField
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <IconButton data-testid="header-btn">
+                        <ChairIcon />
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+                inputProps={{ "data-testid": "header-input" }}
+                placeholder="Room"
+                id="outlined-start-adornment"
+                sx={{
+                  m: 1,
+                }}
+                value={value}
+                onChange={onChange}
+                error={errors?.room ? true : false}
+                helperText={
+                  errors?.room && (
+                    <span
+                      style={{ position: "absolute", backgroundColor: "black" }}
+                    >
+                      {errors?.room?.message}
+                    </span>
+                  )
+                }
+              />
+            )}
+            name="room"
+          />
+          <Button
+            sx={{ width: 271, mt: 1 }}
+            variant="contained"
+            size="medium"
+            onClick={handleSubmit(onSubmit)}
+          >
+            Entrar
+          </Button>
+        </Grid>
+      </Container>
+    </Grid>
   );
 }
 

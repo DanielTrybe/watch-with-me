@@ -1,3 +1,4 @@
+import io from "socket.io-client";
 import { useEffect, useState } from "react";
 import { Grid, Typography, Box } from "@mui/material";
 import YouTube, { YouTubeProps } from "react-youtube";
@@ -40,12 +41,24 @@ const teste: Messages[] = [
 
 function VideoTemplate() {
   const classes = useStyles;
-  const { searchVideo, messages, loading, users, sendMessage } =
-    useCardsContext();
+  const {
+    searchVideo,
+    setSearchVideo,
+    messages,
+    loading,
+    users,
+    sendMessage,
+    findVideoByURL,
+    socketMethots,
+  } = useCardsContext();
   const [videoName, setVideoName] = useState("" as string);
   const [opts, setOpts] = useState(primaryOpts);
 
   const onPlayerReady: YouTubeProps["onReady"] = (event) => {
+    // const socket = io("/");
+    const socket = io("http://localhost:5000");
+    setSearchVideo(event.target);
+    socketMethots(socket);
     // access to player in all event handlers via event.target
     setVideoName(event.target.getVideoData().title);
     event.target.playVideo();
@@ -66,10 +79,14 @@ function VideoTemplate() {
       </Typography>
       <Grid sx={{ display: "flex", flexWrap: "wrap", width: "100%" }}>
         <Box minWidth="70%">
-          <YouTube videoId={searchVideo} opts={opts} onReady={onPlayerReady} />
+          <YouTube
+            videoId={findVideoByURL}
+            opts={opts}
+            onReady={onPlayerReady}
+          />
         </Box>
         <Box minWidth="25%">
-          <UsersChat users={teste} sendMessage={sendMessage} />
+          <UsersChat users={messages} sendMessage={sendMessage} />
         </Box>
       </Grid>
     </>
