@@ -7,6 +7,7 @@ import WatchWithMeLogo from "images/logo_watchwithme.png";
 import { useCardsContext } from "hooks";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import useAuth from "services/context/AuthContext";
 
 interface IFormInputs {
   searchTerm: string;
@@ -21,6 +22,7 @@ const schema = yup.object({
 export default function Header() {
   const classes = useStyles;
   const { getNewVideo } = useCardsContext();
+  const { logout } = useAuth();
 
   const onSubmit = (data: { searchTerm: string }) => {
     getNewVideo(data.searchTerm);
@@ -88,6 +90,9 @@ export default function Header() {
         )}
         name="searchTerm"
       />
+      <button type="button" onClick={() => logout()}>
+        sair
+      </button>
     </Grid>
   );
 }

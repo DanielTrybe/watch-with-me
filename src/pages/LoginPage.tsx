@@ -1,14 +1,10 @@
 import {
   Grid,
-  Typography,
-  Box,
   Container,
-  TextField,
   InputAdornment,
   IconButton,
   Button,
 } from "@mui/material";
-import { useCardsContext } from "hooks";
 import { CustomTextField } from "./style";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import ContactPageIcon from "@mui/icons-material/ContactPage";
@@ -17,10 +13,10 @@ import WatchWithMeLogo from "images/logo_watchwithme.png";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import useAuth from "services/context/AuthContext";
 
 const schema = yup.object({
   userName: yup.string().required("Por favor, digite um nome"),
-  room: yup.string().required("Por favor, escolha ou crie uma nova sala"),
 });
 
 interface IFormInputs {
@@ -30,7 +26,7 @@ interface IFormInputs {
 }
 
 function LoginPage() {
-  const { setloginUser } = useCardsContext();
+  const { authenticate } = useAuth();
 
   const {
     control,
@@ -41,12 +37,11 @@ function LoginPage() {
     defaultValues: {
       userName: "",
       avatar: "",
-      room: "",
     },
   });
 
   const onSubmit = (data: IFormInputs) => {
-    setloginUser(data);
+    authenticate(data);
   };
 
   return (
@@ -130,41 +125,6 @@ function LoginPage() {
             name="avatar"
           />
 
-          <Controller
-            control={control}
-            render={({ field: { onChange, value } }) => (
-              <CustomTextField
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <IconButton data-testid="header-btn">
-                        <ChairIcon />
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-                inputProps={{ "data-testid": "header-input" }}
-                placeholder="Room"
-                id="outlined-start-adornment"
-                sx={{
-                  m: 1,
-                }}
-                value={value}
-                onChange={onChange}
-                error={errors?.room ? true : false}
-                helperText={
-                  errors?.room && (
-                    <span
-                      style={{ position: "absolute", backgroundColor: "black" }}
-                    >
-                      {errors?.room?.message}
-                    </span>
-                  )
-                }
-              />
-            )}
-            name="room"
-          />
           <Button
             sx={{ width: 271, mt: 1 }}
             variant="contained"

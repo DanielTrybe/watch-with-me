@@ -1,10 +1,10 @@
+import useAuth from "services/context/AuthContext";
 import LoginRoute from "./LoginRoute";
 import PrivateRoutes from "./PrivateRoutes";
-import { useCardsContext } from "hooks";
 
 function AppRoutes() {
-  const { loginUser } = useCardsContext();
-  return loginUser.userName ? <PrivateRoutes /> : <LoginRoute />;
+  const { user } = useAuth();
+  return user.userName ? <PrivateRoutes /> : <LoginRoute />;
 }
 
 export default AppRoutes;

@@ -25,8 +25,8 @@ function UsersChat({ users, sendMessage }: ChatProps) {
       <Typography variant="h4">Mensages</Typography>
       <Box>
         <List sx={{ width: "100%", bgcolor: "background.paper" }}>
-          {users.map((userMessage) => (
-            <>
+          {users.map((userMessage, index) => (
+            <div key={index}>
               <ListItem alignItems="flex-start">
                 <ListItemAvatar>
                   <Avatar alt="Remy Sharp" src={userMessage.avatar} />
@@ -37,7 +37,7 @@ function UsersChat({ users, sendMessage }: ChatProps) {
                 />
               </ListItem>
               <Divider variant="inset" component="li" />
-            </>
+            </div>
           ))}
         </List>
       </Box>

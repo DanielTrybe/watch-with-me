@@ -22,48 +22,36 @@ io.on("connection", function (socket) {
   //to = send all except sender
 
   socket.on("JoinRoom", (data) => {
-    socket.join(data.room);
-    socket.room = data.room;
     socket.userName = data.userName;
     socket.avatar = data.avatar;
-
     const message = socket.userName + " joined the room.";
-    io.in(socket.room).emit("NewMessage", {
+    io.emit("ReceivedMessage", {
       userName: "Server Notification",
       avatar: data.avatar,
       message,
     });
 
-    io.in(socket.room).emit("AskUser");
-  });
-
-  socket.on("AskVideo", () => {
-    socket.to(socket.room).emit("AskVideo");
-  });
-
-  socket.on("Play", () => {
-    socket.to(socket.room).emit("Play");
-  });
-
-  socket.on("Pause", () => {
-    socket.to(socket.room).emit("Pause");
-  });
-
-  socket.on("VideoSync", (currentTime) => {
-    socket.to(socket.room).emit("VideoSync", currentTime);
-  });
-
-  socket.on("NewVideo", (videoURL) => {
-    io.to(socket.room).emit("NewVideo", videoURL);
+    // io.emit("AskUser");
+    console.log(data);
   });
 
   socket.on("SendMessage", (data) => {
-    console.log("recebi");
-    io.in(socket.room).emit("NewMessage", data);
+    io.emit("ReceivedMessage", data);
   });
 
-  socket.on("SendUser", (username) => {
-    io.in(socket.room).emit("SendUser", username);
+  socket.on("Play", () => {
+    console.log("play");
+    io.emit("Play");
+  });
+
+  socket.on("Pause", () => {
+    console.log("pause");
+    io.emit("Pause");
+  });
+
+  socket.on("SyncTime", (data) => {
+    console.log("synctime", data);
+    io.emit("SyncTime", data);
   });
 });
 

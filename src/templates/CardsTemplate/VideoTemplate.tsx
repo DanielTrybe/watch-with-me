@@ -1,8 +1,7 @@
-import io from "socket.io-client";
 import { useEffect, useState } from "react";
 import { Grid, Typography, Box } from "@mui/material";
 import YouTube, { YouTubeProps } from "react-youtube";
-import { useCardsContext } from "hooks";
+import { useCardsContext, useVideoStateChange } from "hooks";
 
 import { useStyles } from "./style";
 import { Messages } from "services/context/types";
@@ -13,55 +12,53 @@ const primaryOpts = {
   width: "1000",
   playerVars: {
     // https://developers.google.com/youtube/player_parameters
-    autoplay: 1,
+    autoplay: 0,
   },
 };
-
-const teste: Messages[] = [
-  {
-    avatar:
-      "http://pm1.narvii.com/6509/2f42c67dd3cca71f69dd4788a0e7b76c337aa6f7_00.jpg",
-    userName: "daniel",
-    message: "faebuifeagufueahfea",
-  },
-  {
-    avatar:
-      "https://img1.ak.crunchyroll.com/i/spire4/8351984b9ef0f2ae0840434854e6d8151248552879_large.png",
-    userName: "pedro",
-    message: "18181851851",
-  },
-  {
-    avatar: "https://images6.alphacoders.com/104/1040238.png",
-    userName: "maria",
-    message: "374r8234rf834q8",
-  },
-  { avatar: "algo", userName: "fulano", message: "bgdfbdt" },
-  { avatar: "algo", userName: "ciclano", message: "1478rf4383445r1fv1csac" },
-];
 
 function VideoTemplate() {
   const classes = useStyles;
   const {
-    searchVideo,
-    setSearchVideo,
+    socketContext,
+
     messages,
-    loading,
-    users,
+    setMessages,
+
     sendMessage,
     findVideoByURL,
-    socketMethots,
+    loginUser,
   } = useCardsContext();
+  const { videoState } = useVideoStateChange();
   const [videoName, setVideoName] = useState("" as string);
   const [opts, setOpts] = useState(primaryOpts);
 
+  const syncTime = (currentTime: any, player: any) => {
+    if (
+      player.getCurrentTime() < currentTime - 0.5 ||
+      player.getCurrentTime() > currentTime + 0.5
+    ) {
+      player.seekTo(currentTime);
+      player.playVideo();
+    }
+  };
+
   const onPlayerReady: YouTubeProps["onReady"] = (event) => {
-    // const socket = io("/");
-    const socket = io("http://localhost:5000");
-    setSearchVideo(event.target);
-    socketMethots(socket);
-    // access to player in all event handlers via event.target
+    socketContext.on("Play", () => {
+      console.log("dar plkay");
+      event.target.playVideo();
+    });
+
+    socketContext.on("Pause", () => {
+      console.log("dar pause");
+      event.target.pauseVideo();
+    });
+
+    socketContext.on("SyncTime", (data: any) => {
+      console.log("SINCRONIZANDO");
+      syncTime(data, event.target);
+    });
+
     setVideoName(event.target.getVideoData().title);
-    event.target.playVideo();
   };
 
   useEffect(() => {
@@ -83,8 +80,10 @@ function VideoTemplate() {
             videoId={findVideoByURL}
             opts={opts}
             onReady={onPlayerReady}
+            onStateChange={(e) => videoState(e.target, socketContext)}
           />
         </Box>
+
         <Box minWidth="25%">
           <UsersChat users={messages} sendMessage={sendMessage} />
         </Box>
