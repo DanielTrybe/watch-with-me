@@ -1,5 +1,9 @@
 function useVideoStateChange() {
-  const videoState = (player: any, socket: any, setVideoName: any) => {
+  const videoState = (
+    player: any,
+    socket: any,
+    setVideoName: (title: string) => void
+  ) => {
     setVideoName(player.getVideoData().title);
 
     switch (player.getPlayerState()) {

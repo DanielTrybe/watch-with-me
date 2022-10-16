@@ -1,12 +1,11 @@
 import io from "socket.io-client";
 import React, { createContext, useEffect, useState } from "react";
-import { Messages } from "./types";
+import { Messages, CardsContextProps } from "./types";
 import useAuth from "./AuthContext";
 
-export const CardsContext = createContext({} as any);
-// receber mensagens e enviar
+export const CardsContext = createContext({} as CardsContextProps);
 
-const socketContext = io("http://localhost:5000");
+const socketContext = io("/");
 
 const CardsProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -14,14 +13,9 @@ const CardsProvider: React.FC<{ children: React.ReactNode }> = ({
   const { user } = useAuth();
 
   const [messages, setMessages] = useState([] as Messages[]);
-  const sendNewVideo = (url: string) => {
-    // socket.emit("NewVideo", url);
-  };
-  //https://www.youtube.com/watch?v=W9aXIZ36J1I
+
   const getNewVideo = (url: string) => {
     socketContext.emit("NewVideo", url);
-
-    // setFindVideoByURL(id);
   };
 
   const sendMessage = (message: string) => {
@@ -34,8 +28,8 @@ const CardsProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   useEffect(() => {
-    socketContext.on("ReceivedMessage", (data: any) => {
-      setMessages((previous: any) => [...previous, data]);
+    socketContext.on("ReceivedMessage", (data: Messages) => {
+      setMessages((previous: Messages[]) => [...previous, data]);
       setTimeout(() => {
         const scroll = document.getElementById("chat") as any;
         scroll.scrollTo(0, scroll.scrollHeight);
@@ -46,9 +40,6 @@ const CardsProvider: React.FC<{ children: React.ReactNode }> = ({
   const values = {
     messages,
     sendMessage,
-    setMessages,
-    sendNewVideo,
-
     getNewVideo,
     socketContext,
   };
