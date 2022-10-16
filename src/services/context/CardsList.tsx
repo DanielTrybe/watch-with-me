@@ -6,7 +6,8 @@ import useAuth from "./AuthContext";
 export const CardsContext = createContext({} as any);
 // receber mensagens e enviar
 
-const socketContext = io("http://localhost:5000");
+// const socketContext = io("http://localhost:5000");
+const socketContext = io("/");
 
 const CardsProvider: React.FC<{ children: React.ReactNode }> = ({
   children,

@@ -24,7 +24,8 @@ type AuthProviderProps = {
   children: React.ReactNode;
 };
 
-const socket = io("http://localhost:5000");
+// const socket = io("http://localhost:5000");
+const socket = io("/");
 
 function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState({} as LogUser);
