@@ -13,9 +13,7 @@ app.use(cors());
 
 const PORT = process.env.PORT || 5000;
 
-// app.use(express.static(__dirname + "/../../build"));
-
-const video = "";
+app.use(express.static(__dirname + "/../../build"));
 
 io.on("connection", function (socket) {
   //in = send all
