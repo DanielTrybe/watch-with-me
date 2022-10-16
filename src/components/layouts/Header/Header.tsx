@@ -1,12 +1,14 @@
-import { useState } from "react";
 import { Grid, Box, InputAdornment, IconButton } from "@mui/material";
 import { useForm, Controller } from "react-hook-form";
 import SearchIcon from "@mui/icons-material/Search";
-import { useStyles, CustomTextField } from "./style";
+import { useStyles, CustomTextField, CustomButton, CustomGrid } from "./style";
 import WatchWithMeLogo from "images/logo_watchwithme.png";
+import LogoutIcon from "@mui/icons-material/Logout";
 import { useCardsContext } from "hooks";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import useAuth from "context/AuthContext";
+import { useEffect, useState } from "react";
 
 interface IFormInputs {
   searchTerm: string;
@@ -20,10 +22,12 @@ const schema = yup.object({
 
 export default function Header() {
   const classes = useStyles;
-  const { setSearchVideo } = useCardsContext();
+  const [showLogo, setShowLogo] = useState(true);
+  const { getNewVideo } = useCardsContext();
+  const { logout } = useAuth();
 
   const onSubmit = (data: { searchTerm: string }) => {
-    setSearchVideo(data.searchTerm);
+    getNewVideo(data.searchTerm);
   };
 
   const {
@@ -37,21 +41,31 @@ export default function Header() {
     },
   });
 
+  useEffect(() => {
+    window.onresize = () => {
+      const width = window.screen.width < 500 ? true : false;
+      setShowLogo(width);
+    };
+  }, []);
+
   return (
-    <Grid style={classes.header}>
-      <Box
-        sx={{
-          width: 140,
-        }}
-      >
-        <img
-          data-testid="header-logo"
-          src={WatchWithMeLogo}
-          style={classes.imgLogo}
-          width="123px"
-          alt="logo"
-        />
-      </Box>
+    <Grid sx={{ display: "flex", alignItems: "center" }}>
+      {window.screen.width > 700 && (
+        <Box
+          sx={{
+            width: 123,
+          }}
+        >
+          <img
+            data-testid="header-logo"
+            src={WatchWithMeLogo}
+            style={classes.imgLogo}
+            width="123px"
+            alt="logo"
+          />
+        </Box>
+      )}
+
       <Controller
         control={control}
         render={({ field: { onChange, value } }) => (
@@ -88,6 +102,10 @@ export default function Header() {
         )}
         name="searchTerm"
       />
+      <CustomButton type="button" onClick={() => logout()}>
+        <LogoutIcon />
+        sair
+      </CustomButton>
     </Grid>
   );
 }

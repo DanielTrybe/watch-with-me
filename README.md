@@ -1,6 +1,9 @@
-# Projeto Watch-With-Me
+# Projeto Vamos assistir juntos
 
-<!-- <code><img height="50" src="https://blog.4linux.com.br/wp-content/uploads/2018/01/Heroku.png"></code><a href="https://softeo-frontend-daniel.herokuapp.com/">clique aqui para visualizar no HEROKU</a> -->
+Clique e veja a prévia da aplicação.
+[![explorer_W000nMs3SS](https://user-images.githubusercontent.com/78499630/196059996-43aac62f-219f-4184-a780-000e75f9dd21.png)](https://www.youtube.com/watch?v=ni3g_sesykc)
+
+<code><img height="50" src="https://blog.4linux.com.br/wp-content/uploads/2018/01/Heroku.png"></code><a href="https://vamos-ver-juntos.herokuapp.com/">Clique aqui para visualizar no HEROKU</a>
 
 ## Principais tecnologias utilizadas
 
@@ -61,11 +64,14 @@ Com isto inicializamos um novo repositório, associamos o remoto com o link do r
 
 ## Página inicial
 
-1. Faça o login e escolha a sala que quer entrar
+1. Faça o login e escolha um avatar, lembrando que devem ser link válidos de imagens, por exemplo:
+   <code>https://img.ibxk.com.br/2017/07/13/13160112901226.jpg</code>
 
-## Watch With Me
+## Vamos assistir juntos
 
-1. Aqui você pode assistir com as pessoas que entraram na sala e comentar sobre o video em tempo real!
+1. Aqui você pode assistir com as pessoas que entrarem na sala e comentar sobre o video em tempo real!
+2. É possível pausar o vídeo para todas pessoas e também avançar ou retroceder, todos vão assistir juntos!
+3. escolha novos vídeos para continuar assistindo juntos!
 
 ### Estrutura
 
@@ -73,16 +79,13 @@ O código contém a seguinte estrutura:
 
 ```
   src
-  |  |-__mocks__
   |  |-__tests__
   |  |-components
-  |    |-chat
-  |    |-layouts
   |  |-hooks
   |  |-images
+  |  |-server
   |  |-pages
   |  |-routes
-  |  |-services
   |  |-context
   |  |-templates
 ```

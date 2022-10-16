@@ -11,16 +11,17 @@ export type Messages = {
 export type LogUser = {
   avatar: string;
   userName: string;
-  room: string;
 };
 
 export interface CardsContextProps {
-  users: Users[];
   messages: Messages[];
-  searchVideo: string;
-  setSearchVideo: (value: string) => void;
-  loading: boolean;
   sendMessage: (message: string) => void;
-  loginUser: LogUser;
-  setloginUser: (data: LogUser) => void;
+  getNewVideo: (url: string) => void;
+  socketContext: any;
+}
+
+export interface AuthContextProps {
+  authenticate: (data: LogUser) => void;
+  logout: () => void;
+  user: LogUser;
 }

@@ -1,1 +1,2 @@
-export { default as VideoTemplate } from "./CardsTemplate/VideoTemplate";
+export { default as VideoTemplate } from "./VideoTemplate/VideoTemplate";
+export { default as LoginTemplate } from "./LoginTemplate/LoginTemplate";
