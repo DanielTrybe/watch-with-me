@@ -3,6 +3,8 @@
 Clique e veja a prévia da aplicação.
 [![explorer_W000nMs3SS](https://user-images.githubusercontent.com/78499630/196059996-43aac62f-219f-4184-a780-000e75f9dd21.png)](https://www.youtube.com/watch?v=ni3g_sesykc)
 
+<code><img height="50" src="https://blog.4linux.com.br/wp-content/uploads/2018/01/Heroku.png"></code><a href="https://vamos-ver-juntos.herokuapp.com/">Clique aqui para visualizar no HEROKU</a>
+
 ## Principais tecnologias utilizadas
 
 <code><img height="30" src="https://bognarjunior.files.wordpress.com/2018/09/typescript.png"></code>
