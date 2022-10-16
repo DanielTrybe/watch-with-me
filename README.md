@@ -5,6 +5,12 @@ Clique e veja a prévia da aplicação.
 
 <code><img height="50" src="https://blog.4linux.com.br/wp-content/uploads/2018/01/Heroku.png"></code><a href="https://vamos-ver-juntos.herokuapp.com/">Clique aqui para visualizar no HEROKU</a>
 
+## Vamos assistir juntos
+
+1. Aqui você pode assistir com as pessoas que entrarem na sala e comentar sobre o video em tempo real!
+2. É possível pausar o vídeo para todas pessoas e também avançar ou retroceder, todos vão assistir juntos!
+3. escolha novos vídeos para continuar assistindo juntos!
+
 ## Principais tecnologias utilizadas
 
 <code><img height="30" src="https://bognarjunior.files.wordpress.com/2018/09/typescript.png"></code>
@@ -72,12 +78,6 @@ Com isto inicializamos um novo repositório, associamos o remoto com o link do r
 
 1. Faça o login e escolha um avatar, lembrando que devem ser link válidos de imagens, por exemplo:
    <code>https://img.ibxk.com.br/2017/07/13/13160112901226.jpg</code>
-
-## Vamos assistir juntos
-
-1. Aqui você pode assistir com as pessoas que entrarem na sala e comentar sobre o video em tempo real!
-2. É possível pausar o vídeo para todas pessoas e também avançar ou retroceder, todos vão assistir juntos!
-3. escolha novos vídeos para continuar assistindo juntos!
 
 ### Estrutura
 
