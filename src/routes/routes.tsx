@@ -1,4 +1,4 @@
-import useAuth from "services/context/AuthContext";
+import useAuth from "context/AuthContext";
 import LoginRoute from "./LoginRoute";
 import PrivateRoutes from "./PrivateRoutes";
 

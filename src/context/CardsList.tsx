@@ -14,9 +14,6 @@ const CardsProvider: React.FC<{ children: React.ReactNode }> = ({
   const { user } = useAuth();
 
   const [messages, setMessages] = useState([] as Messages[]);
-
-  const [findVideoByURL, setFindVideoByURL] = useState("LzBawioIFQI" as string);
-
   const sendNewVideo = (url: string) => {
     // socket.emit("NewVideo", url);
   };
@@ -39,6 +36,10 @@ const CardsProvider: React.FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     socketContext.on("ReceivedMessage", (data: any) => {
       setMessages((previous: any) => [...previous, data]);
+      setTimeout(() => {
+        const scroll = document.getElementById("chat") as any;
+        scroll.scrollTo(0, scroll.scrollHeight);
+      }, 500);
     });
   }, []);
 
@@ -47,7 +48,7 @@ const CardsProvider: React.FC<{ children: React.ReactNode }> = ({
     sendMessage,
     setMessages,
     sendNewVideo,
-    findVideoByURL,
+
     getNewVideo,
     socketContext,
   };

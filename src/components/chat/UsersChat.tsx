@@ -1,4 +1,4 @@
-import { Messages } from "services/context/types";
+import { Messages } from "context/types";
 import {
   Grid,
   Typography,
@@ -20,7 +20,13 @@ type ChatProps = {
 function UsersChat({ users, sendMessage }: ChatProps) {
   return (
     <Grid
-      sx={{ width: 370, maxHeight: 700, minHeight: 700, overflowY: "scroll" }}
+      sx={{
+        width: 370,
+        maxHeight: 700,
+        minHeight: 700,
+        overflowY: "scroll",
+      }}
+      id="chat"
     >
       <Typography variant="h4">Mensages</Typography>
       <Box>

@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 import { Grid, Typography, Box } from "@mui/material";
 import YouTube, { YouTubeProps } from "react-youtube";
 import { useCardsContext, useVideoStateChange } from "hooks";
-
 import { useStyles } from "./style";
-import { Messages } from "services/context/types";
 import UsersChat from "components/chat/UsersChat";
 
 const primaryOpts = {
@@ -18,16 +16,7 @@ const primaryOpts = {
 
 function VideoTemplate() {
   const classes = useStyles;
-  const {
-    socketContext,
-
-    messages,
-    setMessages,
-
-    sendMessage,
-    findVideoByURL,
-    loginUser,
-  } = useCardsContext();
+  const { socketContext, messages, sendMessage } = useCardsContext();
   const { videoState } = useVideoStateChange();
   const [videoName, setVideoName] = useState("" as string);
   const [opts, setOpts] = useState(primaryOpts);
@@ -96,10 +85,12 @@ function VideoTemplate() {
       <Grid sx={{ display: "flex", flexWrap: "wrap", width: "100%" }}>
         <Box minWidth="70%">
           <YouTube
-            videoId={findVideoByURL}
+            videoId="LzBawioIFQI"
             opts={opts}
             onReady={onPlayerReady}
-            onStateChange={(e) => videoState(e.target, socketContext)}
+            onStateChange={(e) =>
+              videoState(e.target, socketContext, setVideoName)
+            }
           />
         </Box>
 
