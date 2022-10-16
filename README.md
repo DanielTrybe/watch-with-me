@@ -55,8 +55,14 @@ Com isto inicializamos um novo repositório, associamos o remoto com o link do r
 1. Abra o VS code, vá em arquivos e procure a pasta do projeto.
 2. Clique no menu terminal e depois em novo terminal, execude o comando: <code>npm install</code>
 3. Não interrompa a instalação, ou terá que executar o comando acima novamente.
-4. Após tudo instalado, execute no terminal: <code>npm start</code>
-5. Aguarde um pouco, dependendo da sua máquina pode levar bastante tempo.
+
+## Terceira parte
+
+1. Após instalar tudo com npm install, vá na pasta context e altere as constantes do socket para <code>const socket = io("http://localhost:5000")</code>, pois o socket vai rodar localmente agora
+2. na pasta <code>src/server/server.js</code> comente a linha 16 (app.use(express.static(\_\_dirname + "/../../build")))
+3. no packedjson altere o script: start para <code>"start": "react-scripts start"</code>
+4. Após tudo feito, execute no terminal: <code>node src/server/server.js</code>
+5. Depois <code>npm start</code> e aguarde um pouco, dependendo da sua máquina pode levar algum tempo.
 6. Quando terminar, será aberto em seu navegador o website.
 7. Pronto! A aplicação está pronta para uso!
 
