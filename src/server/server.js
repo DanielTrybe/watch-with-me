@@ -40,18 +40,19 @@ io.on("connection", function (socket) {
   });
 
   socket.on("Play", () => {
-    console.log("play");
     io.emit("Play");
   });
 
   socket.on("Pause", () => {
-    console.log("pause");
     io.emit("Pause");
   });
 
   socket.on("SyncTime", (data) => {
-    console.log("synctime", data);
     io.emit("SyncTime", data);
+  });
+
+  socket.on("NewVideo", (url) => {
+    io.emit("NewVideo", url);
   });
 });
 

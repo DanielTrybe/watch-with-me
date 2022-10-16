@@ -32,6 +32,22 @@ function VideoTemplate() {
   const [videoName, setVideoName] = useState("" as string);
   const [opts, setOpts] = useState(primaryOpts);
 
+  const getYoutubeIdByUrl = (url: any) => {
+    let ID = "";
+
+    url = url
+      .replace(/(>|<)/gi, "")
+      .split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+
+    if (url[2] !== undefined) {
+      ID = url[2].split(/[^0-9a-z_-]/i);
+      ID = ID[0];
+    } else {
+      ID = url;
+    }
+    return ID;
+  };
+
   const syncTime = (currentTime: any, player: any) => {
     if (
       player.getCurrentTime() < currentTime - 0.5 ||
@@ -44,18 +60,21 @@ function VideoTemplate() {
 
   const onPlayerReady: YouTubeProps["onReady"] = (event) => {
     socketContext.on("Play", () => {
-      console.log("dar plkay");
       event.target.playVideo();
     });
 
     socketContext.on("Pause", () => {
-      console.log("dar pause");
       event.target.pauseVideo();
     });
 
     socketContext.on("SyncTime", (data: any) => {
-      console.log("SINCRONIZANDO");
       syncTime(data, event.target);
+    });
+
+    socketContext.on("NewVideo", (videoUrl: any) => {
+      event.target.loadVideoById({
+        videoId: getYoutubeIdByUrl(videoUrl),
+      });
     });
 
     setVideoName(event.target.getVideoData().title);

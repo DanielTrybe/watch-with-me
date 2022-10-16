@@ -22,10 +22,9 @@ const CardsProvider: React.FC<{ children: React.ReactNode }> = ({
   };
   //https://www.youtube.com/watch?v=W9aXIZ36J1I
   const getNewVideo = (url: string) => {
-    const id = url.split("=")[1];
     socketContext.emit("NewVideo", url);
 
-    setFindVideoByURL(id);
+    // setFindVideoByURL(id);
   };
 
   const sendMessage = (message: string) => {
