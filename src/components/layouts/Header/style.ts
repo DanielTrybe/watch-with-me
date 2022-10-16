@@ -6,12 +6,6 @@ const useStyles = {
     borderRadius: 5,
     border: "1px solid gray",
   },
-  header: {
-    display: "flex",
-    alignItems: "center",
-    width: "100%",
-    gap: 10,
-  },
   btnNewClient: {
     backgroundColor: "#225F6E",
     borderRadius: 5,
@@ -33,29 +27,25 @@ const useStyles = {
   },
 };
 
-// const CustomTextField = styled(TextField)`
-//   width: 100%;
-//   background: "gray";
-//   overflow: "visible";
+const CustomButton = styled.button`
+  background: black;
+  border: 1px solid gray;
+  color: white;
+  cursor: pointer;
+  height: 56px;
+  border-radius: 50%;
+  &:hover {
+    background: gray;
+  }
+`;
 
-//   "& label.mui-focused": {
-//     color: "purple";
-//   }
-//   "& .muiinput-underline:after": {
-//     borderbottomcolor: "purple";
-//   }
-//   "& .muioutlinedinput-root": {
-//     "& fieldset": {
-//       bordercolor: "black";
-//     }
-//     "&:hover fieldset": {
-//       bordercolor: "purple";
-//     }
-//     "&.mui-focused fieldset": {
-//       bordercolor: "purple";
-//     }
-//   }
-// `;
+const CustomGrid = styled.div`
+  display: "flex";
+
+  alignitems: "center";
+
+  width: "100%";
+`;
 
 const CustomTextField = styled(TextField)`
   background: white;
@@ -78,4 +68,4 @@ const CustomTextField = styled(TextField)`
   }
 `;
 
-export { useStyles, CustomTextField };
+export { useStyles, CustomTextField, CustomButton, CustomGrid };

@@ -25,12 +25,15 @@ function UsersChat({ users, sendMessage }: ChatProps) {
         maxHeight: 700,
         minHeight: 700,
         overflowY: "scroll",
+        pr: 3,
+        pb: 5,
+        pt: 2,
       }}
       id="chat"
     >
       <Typography variant="h4">Mensages</Typography>
       <Box>
-        <List sx={{ width: "100%", bgcolor: "background.paper" }}>
+        <List sx={{ maxWidth: "100%", bgcolor: "background.paper" }}>
           {users.map((userMessage, index) => (
             <div key={index}>
               <ListItem alignItems="flex-start">
