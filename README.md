@@ -1,5 +1,6 @@
 # Projeto Vamos assistir juntos
 
+Clique e veja a prévia da aplicação.
 [![explorer_W000nMs3SS](https://user-images.githubusercontent.com/78499630/196059996-43aac62f-219f-4184-a780-000e75f9dd21.png)](https://www.youtube.com/watch?v=ni3g_sesykc)
 
 ## Principais tecnologias utilizadas
