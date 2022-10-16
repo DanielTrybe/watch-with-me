@@ -13,10 +13,7 @@ function useVideoStateChange() {
       case 0:
         break;
       case 1:
-        // socket.emit("VideoSync", {
-        //   currentTime: player.getCurrentTime(),
-        //   url: player.getVideoUrl(),
-        // });
+        socket.emit("SyncTime", player.getCurrentTime());
 
         socket.emit("Play");
         break;
