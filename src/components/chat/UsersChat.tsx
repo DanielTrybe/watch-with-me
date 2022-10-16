@@ -34,6 +34,7 @@ function UsersChat({ users, sendMessage }: ChatProps) {
                 <ListItemText
                   primary={userMessage.userName}
                   secondary={userMessage.message}
+                  sx={{ wordBreak: "break-all" }}
                 />
               </ListItem>
               <Divider variant="inset" component="li" />

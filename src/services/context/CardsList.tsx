@@ -28,11 +28,11 @@ const CardsProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const sendMessage = (message: string) => {
-    // socket.emit("SendMessage", {
-    //   userName: loginUser.userName,
-    //   room: loginUser.room,
-    //   message,
-    // });
+    socketContext.emit("SendMessage", {
+      userName: user.userName,
+      avatar: user.avatar,
+      message,
+    });
     // nanda nova mensagem
   };
 
